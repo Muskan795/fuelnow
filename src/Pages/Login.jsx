@@ -1,8 +1,12 @@
 import React from "react";
 import loginBg from "../assets/Images/LoginBg.png";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div
       style={{
@@ -39,7 +43,11 @@ const Login = () => {
           borderRadius: "12px",
         }}
       >
-        <h2 style={{ textAlign: "center",  fontSize: "24px",fontWeight: "600"}}>Login</h2>
+        <h2
+          style={{ textAlign: "center", fontSize: "24px", fontWeight: "600" }}
+        >
+          Login
+        </h2>
 
         {/* EMAIL */}
         <label
@@ -54,6 +62,8 @@ const Login = () => {
         <input
           type="email"
           placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={{
             width: "100%",
             padding: "10px",
@@ -91,6 +101,8 @@ const Login = () => {
         <input
           type="password"
           placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           style={{
             width: "100%",
             padding: "10px",
@@ -99,23 +111,22 @@ const Login = () => {
             border: "1px solid #ccc",
           }}
         />
-
-<button
-  type="submit"
-  style={{
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#f97316", // orange-500
-    color: "white",
-    border: "none",
-    borderRadius: "6px",
-    fontSize: "20px",
-    cursor: "pointer",
-  }}
->
-  Login
-</button>
-
+        
+        <button 
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "10px",
+            backgroundColor: "#f97316", // orange-500
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+            fontSize: "20px",
+            cursor: "pointer",
+          }}
+        >
+          Login
+        </button>
 
         <div className="flex items-center gap-2 mt-3">
           <h2> If not registered ?</h2>
@@ -124,9 +135,8 @@ const Login = () => {
             className={({ isActive }) => (isActive ? "active-link" : "")}
             style={{
               color: "#f97316",
-              fontSize: "18px",
+              fontSize: "16px",
               fontWeight: "500",
-              
             }}
           >
             Register

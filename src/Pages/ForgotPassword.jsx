@@ -50,7 +50,7 @@ const ForgotPassword = () => {
           Remember your password?{" "}
           <NavLink
             to="/login"
-            className="text-orange-600 font-medium hover:underline"
+            className="text-orange-600 font-medium"
           >
             Back to Login
           </NavLink>
