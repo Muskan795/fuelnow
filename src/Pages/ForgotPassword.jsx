@@ -9,7 +9,7 @@ const ForgotPassword = () => {
       style={{ backgroundImage: `url(${loginBg})` }}
     >
       {/* TOP HEADING */}
-      <h1 className="absolute top-16 text-white text-3xl font-bold drop-shadow-lg text-center px-4">
+      <h1 className="absolute top-16 text-white text-3xl font-bold shadow-lg text-center px-4">
         Emergency Fuel Assistance Platform
       </h1>
 
@@ -32,7 +32,7 @@ const ForgotPassword = () => {
           type="email"
           placeholder="Enter your email"
           className="w-full px-4 py-2 mb-4 border rounded-md 
-                     focus:outline-none focus:ring-2 focus:ring-orange-500"
+                     focus:outline-none focus:ring-2 "
           required
         />
 

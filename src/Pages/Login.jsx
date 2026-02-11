@@ -112,21 +112,16 @@ const Login = () => {
           }}
         />
         
-        <button 
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "10px",
-            backgroundColor: "#f97316", // orange-500
-            color: "white",
-            border: "none",
-            borderRadius: "6px",
-            fontSize: "20px",
-            cursor: "pointer",
-          }}
-        >
-          Login
-        </button>
+        <div className="flex  justify-center">
+          <NavLink
+  to="/home"
+  className="w-1/2 bg-orange-500 text-white py-2 rounded-md font-semibold 
+             hover:bg-orange-600 transition flex justify-center items-center"
+>
+  Login
+</NavLink>
+
+        </div>
 
         <div className="flex items-center gap-2 mt-3">
           <h2> If not registered ?</h2>

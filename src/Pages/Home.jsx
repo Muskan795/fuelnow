@@ -1,12 +1,14 @@
 import React from 'react'
-import { Header } from '../Components/Header'
+
 import HomeBanner from '../Components/HomeBanner'
+import MechanicSection from '../Components/MechanicSection'
 
 export const Home = () => {
   return (
     <div>
-        <Header/>
+       
         <HomeBanner/>
+        <MechanicSection/>
     </div>
   )
 }
