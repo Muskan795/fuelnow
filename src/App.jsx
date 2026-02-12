@@ -6,7 +6,7 @@ import ForgotPassword from "./Pages/ForgotPassword";
 
 import { Home } from "./Pages/Home";
 import { ContactUs } from "./Pages/ContactUs";
-import { AboutUs } from "./Pages/AboutUs";
+import AboutUs from "./Pages/AboutUs";
 import { Header } from "./Components/Header";
 import VerifyOtp from "./Pages/VerifyOtp";
 import Service from "./Pages/Service";
