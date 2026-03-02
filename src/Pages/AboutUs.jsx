@@ -1,5 +1,6 @@
 import React from "react";
 import aboutus from "../assets/Images/aboutus.png";
+import FaqSection from "../Components/FaqSection";
 
 const AboutUs = () => {
   return (
@@ -136,7 +137,10 @@ const AboutUs = () => {
         </button>
       </div>
     </div>
+  
   );
 };
 
+
 export default AboutUs;
+<FaqSection/>

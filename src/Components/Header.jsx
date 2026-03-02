@@ -60,9 +60,21 @@ export const Header = () => {
               fontWeight: isActive ? "600" : "400",
             })}
           >
-            Register
+            REGISTER
           </NavLink>
+
+           
         </div>
+        <NavLink
+            to="/Cart"
+            style={({ isActive }) => ({
+              color: isActive ? "#f97316" : "black", // orange-500
+              fontWeight: isActive ? "600" : "400",
+            })}
+          >
+             MY CART
+          </NavLink>
+          
       </div>
     </div>
   );

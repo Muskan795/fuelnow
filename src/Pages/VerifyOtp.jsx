@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const VerifyOtp = () => {
   const [enteredOtp, setEnteredOtp] = useState("");
   const navigate = useNavigate();
-
+  
   const verifyOtp = () => {
     const savedOtp = localStorage.getItem("otp");
 

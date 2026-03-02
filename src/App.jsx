@@ -10,6 +10,8 @@ import AboutUs from "./Pages/AboutUs";
 import { Header } from "./Components/Header";
 import VerifyOtp from "./Pages/VerifyOtp";
 import Service from "./Pages/Service";
+import FuelNow from "./Pages/FuelNow";
+import CartPage from "./Pages/Cart";
 
 const App = () => {
   return (
@@ -29,9 +31,9 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/verify-otp" element={<VerifyOtp/>} />
         <Route path="/service" element={<Service />} />
-
+        <Route path="/fuel-now" element={<FuelNow />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-
+         <Route path="/Cart" element={<CartPage />} />
       </Routes>
     </BrowserRouter>
   );
