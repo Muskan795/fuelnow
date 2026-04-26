@@ -131,7 +131,7 @@ const Login = () => {
             style={{
               color: "#f97316",
               fontSize: "16px",
-              fontWeight: "500",
+              fontWeight: "300",
             }}
           >
             Register
