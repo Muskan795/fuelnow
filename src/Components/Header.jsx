@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/Images/logo.png";
 
-export const Header = () => {
+export const Header = ({ cart }) => {
   return (
     <div>
       <div className="flex gap-10 justify-evenly items-center px-6 py-2 border border-gray-300">
@@ -74,7 +74,7 @@ export const Header = () => {
           >
              MY CART
           </NavLink>
-          
+
       </div>
     </div>
   );

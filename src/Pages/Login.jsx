@@ -1,11 +1,32 @@
 import React from "react";
 import loginBg from "../assets/Images/LoginBg.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 const Login = () => {
+
+  const navigate = useNavigate();   // moved inside component
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // LOGIN FUNCTION
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      alert(error.message);
+    } else {
+      alert("Login successful");
+      navigate("/home");
+    }
+  };
 
   return (
     <div
@@ -35,6 +56,7 @@ const Login = () => {
 
       {/* LOGIN FORM */}
       <form
+        onSubmit={handleLogin}   // added here
         style={{
           width: "320px",
           padding: "25px",
@@ -59,6 +81,7 @@ const Login = () => {
         >
           Email
         </label>
+
         <input
           type="email"
           placeholder="Enter your email"
@@ -111,20 +134,22 @@ const Login = () => {
             border: "1px solid #ccc",
           }}
         />
-        
-        <div className="flex  justify-center">
-          <NavLink
-  to="/home"
-  className="w-1/2 bg-orange-500 text-white py-2 rounded-md font-semibold 
-             hover:bg-orange-600 transition flex justify-center items-center"
->
-  Login
-</NavLink>
+
+        {/* LOGIN BUTTON */}
+        <div className="flex justify-center">
+
+          <button
+            type="submit"
+            className="w-1/2 bg-orange-500 text-white py-2 rounded-md font-semibold hover:bg-orange-600 transition flex justify-center items-center"
+          >
+            Login
+          </button>
 
         </div>
 
         <div className="flex items-center gap-2 mt-3">
-          <h2> If not registered ?</h2>
+          <h2>If not registered ?</h2>
+
           <NavLink
             to="/register"
             className={({ isActive }) => (isActive ? "active-link" : "")}
@@ -137,6 +162,7 @@ const Login = () => {
             Register
           </NavLink>
         </div>
+
       </form>
     </div>
   );
