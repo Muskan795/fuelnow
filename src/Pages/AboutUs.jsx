@@ -1,36 +1,31 @@
 import React from "react";
 import aboutus from "../assets/Images/aboutus.png";
 import FaqSection from "../Components/FaqSection";
+import { NavLink } from "react-router-dom";
 
 const AboutUs = () => {
   return (
     <div className="bg-white">
       {/* ================= HERO SECTION ================= */}
-<div className="relative w-full h-[500px]">
+      <div className="relative w-full h-[500px]">
+        <img
+          src={aboutus}
+          alt="About FuelNow"
+          className="w-full h-full object-cover"
+        />
 
-  <img
-    src={aboutus}
-    alt="About FuelNow"
-    className="w-full h-full object-cover"
-  />
+        <div className="absolute inset-0 bg-black/40"></div>
 
- 
-  <div className="absolute inset-0 bg-black/40"></div>
+        {/* Text On Image */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">About FuelNow</h1>
 
-  {/* Text On Image */}
-  <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-6">
-    <h1 className="text-4xl md:text-6xl font-bold mb-4">
-      About FuelNow
-    </h1>
-
-    <p className="max-w-2xl text-lg text-gray-200">
-      Delivering emergency fuel and on-road mechanic assistance quickly,
-      safely, and reliably across your city.
-    </p>
-  </div>
-
-</div>
-
+          <p className="max-w-2xl text-lg text-gray-200">
+            Delivering emergency fuel and on-road mechanic assistance quickly,
+            safely, and reliably across your city.
+          </p>
+        </div>
+      </div>
 
       {/* ================= WHO WE ARE ================= */}
       <div className="py-16 px-6 max-w-6xl mx-auto">
@@ -132,15 +127,16 @@ const AboutUs = () => {
       <div className="py-16 text-center">
         <h2 className="text-3xl font-bold mb-6">Need Emergency Assistance?</h2>
 
-        <button className="bg-orange-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-orange-600 transition">
+        <NavLink
+          to="/fuel-now"
+          className="bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-md font-semibold transition inline-block"
+        >
           Book Fuel Now
-        </button>
+        </NavLink>
       </div>
     </div>
-  
   );
 };
 
-
 export default AboutUs;
-<FaqSection/>
+<FaqSection />;
