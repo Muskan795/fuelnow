@@ -10,14 +10,16 @@ function FuelNow({ cart, setCart }) {
   const [mapCenter, setMapCenter] = useState([25.7773, 87.4753]); // Purnea
   const [loading, setLoading] = useState(false);
 
-  // FETCH ALL PUMPS
+  // ✅ FETCH ALL PUMPS
   const fetchFuelStations = async () => {
 
     setLoading(true);
 
     const { data, error } = await supabase
-      .from("fuel_stations")
+      .from("fuel_stations")   // ✅ CORRECT TABLE NAME
       .select("*");
+
+    console.log("FETCH DATA:", data, error); // 🔍 DEBUG
 
     if (error) {
       console.log(error);
@@ -27,18 +29,24 @@ function FuelNow({ cart, setCart }) {
     }
 
     const pumps = data.map((item) => ({
-      lat: item.latitude,
-      lon: item.longitude,
+      lat: Number(item.latitude),
+      lon: Number(item.longitude),
       name: item.name,
       address: item.address,
       price: item.fuel_price
     }));
 
     setStations(pumps);
+
+    // ✅ center map to first result
+    if (pumps.length > 0) {
+      setMapCenter([pumps[0].lat, pumps[0].lon]);
+    }
+
     setLoading(false);
   };
 
-  // SEARCH FUNCTION
+  // ✅ SEARCH FUNCTION
   const handleSearch = async () => {
 
     if (!query.trim()) {
@@ -48,46 +56,44 @@ function FuelNow({ cart, setCart }) {
 
     setLoading(true);
 
-    try {
+    const { data, error } = await supabase
+      .from("fuel_stations")   // ✅ FIXED
+      .select("*")
+      .or(`name.ilike.%${query}%,address.ilike.%${query}%`);
 
-      const { data, error } = await supabase
-        .from("fuel_stations")
-        .select("*")
-        .or(`name.ilike.%${query}%,address.ilike.%${query}%`);
+    console.log("SEARCH DATA:", data, error); // 🔍 DEBUG
 
-      if (error) {
-        console.log(error);
-        alert("Search failed");
-        setLoading(false);
-        return;
-      }
+    if (error) {
+      console.log(error);
+      alert("Search failed");
+      setLoading(false);
+      return;
+    }
 
-      const pumps = data.map((item) => ({
-        lat: item.latitude,
-        lon: item.longitude,
-        name: item.name,
-        address: item.address,
-        price: item.fuel_price
-      }));
+    const pumps = data.map((item) => ({
+      lat: Number(item.latitude),
+      lon: Number(item.longitude),
+      name: item.name,
+      address: item.address,
+      price: item.fuel_price
+    }));
 
-      setStations(pumps);
+    setStations(pumps);
 
-    } catch (err) {
-
-      console.log(err);
-      alert("Something went wrong");
-
+    // ✅ move map to search result
+    if (pumps.length > 0) {
+      setMapCenter([pumps[0].lat, pumps[0].lon]);
     }
 
     setLoading(false);
   };
 
-  // LOAD DATA ON PAGE OPEN
+  // ✅ LOAD ON PAGE START
   useEffect(() => {
     fetchFuelStations();
   }, []);
 
-  // ADD TO CART
+  // ✅ ADD TO CART
   const addToCart = (pump, qty) => {
 
     const item = {
@@ -108,7 +114,7 @@ function FuelNow({ cart, setCart }) {
         FuelNow ⛽
       </h2>
 
-      {/* SEARCH SECTION */}
+      {/* SEARCH */}
       <div className="flex gap-3 justify-center mb-6">
 
         <input
@@ -157,14 +163,14 @@ function FuelNow({ cart, setCart }) {
         </p>
       )}
 
-      {/* NO RESULT */}
+      {/* NO DATA */}
       {!loading && stations.length === 0 && (
         <p className="text-center text-gray-500 mb-6">
           No petrol pumps found for this location
         </p>
       )}
 
-      {/* PUMP CARDS */}
+      {/* CARDS */}
       <div className="grid md:grid-cols-3 gap-8">
 
         <div className="md:col-span-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

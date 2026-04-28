@@ -24,15 +24,13 @@ function CartPage({ cart = [], setCart }) {
 
   const totalAmount = cart.reduce(
     (sum, item) => sum + item.quantity * item.price,
-    0
+    0,
   );
 
   return (
     <div className="bg-gray-100 flex justify-center py-12 px-4">
-
       {/* MAIN CART BOX */}
       <div className="bg-white w-full max-w-3xl rounded-2xl shadow-lg p-6 relative">
-
         {/* HEADER */}
         <h2 className="text-2xl font-bold text-center mb-6 border-b pb-3">
           🛒 YOUR CART
@@ -40,7 +38,6 @@ function CartPage({ cart = [], setCart }) {
 
         {/* CART ITEMS */}
         <div className="space-y-4">
-
           {cart.length === 0 ? (
             <p className="text-center text-gray-400">Your cart is empty</p>
           ) : (
@@ -49,16 +46,11 @@ function CartPage({ cart = [], setCart }) {
                 key={i}
                 className="border rounded-xl p-4 flex flex-col gap-3"
               >
-
                 {/* TOP ROW */}
                 <div className="flex justify-between items-center flex-wrap gap-3">
-
-                  <h3 className="font-semibold text-lg">
-                    {item.pump}
-                  </h3>
+                  <h3 className="font-semibold text-lg">{item.pump}</h3>
 
                   <div className="flex items-center gap-3">
-
                     <button
                       onClick={() => decreaseQty(i)}
                       className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300"
@@ -66,9 +58,7 @@ function CartPage({ cart = [], setCart }) {
                       −
                     </button>
 
-                    <span className="font-bold text-lg">
-                      {item.quantity}
-                    </span>
+                    <span className="font-bold text-lg">{item.quantity}</span>
 
                     <button
                       onClick={() => increaseQty(i)}
@@ -80,14 +70,11 @@ function CartPage({ cart = [], setCart }) {
                     <span className="font-bold text-orange-500 ml-4">
                       ₹{item.quantity * item.price}
                     </span>
-
                   </div>
                 </div>
 
                 {/* PRICE */}
-                <p className="text-gray-500 text-sm">
-                  ₹{item.price} / L
-                </p>
+                <p className="text-gray-500 text-sm">₹{item.price} / L</p>
 
                 {/* REMOVE BUTTON */}
                 <div className="flex justify-end">
@@ -98,11 +85,9 @@ function CartPage({ cart = [], setCart }) {
                     REMOVE
                   </button>
                 </div>
-
               </div>
             ))
           )}
-
         </div>
 
         {/* TOTAL SECTION */}
@@ -121,13 +106,13 @@ function CartPage({ cart = [], setCart }) {
         )}
 
         {/* BACK BUTTON */}
+        {/* BACK BUTTON */}
         <button
           onClick={() => navigate("/fuel-now")}
-          className="absolute bottom-4 right-4 border px-4 py-1 rounded hover:bg-gray-100"
+          className="w-30 mt-3 border py-2 rounded-xl text-gray-600 hover:bg-gray-100 transition"
         >
           Back
         </button>
-
       </div>
     </div>
   );
